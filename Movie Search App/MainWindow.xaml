@@ -5,17 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Movie_Search_App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="395.186" Width="599.289"
+        Title="Movie Search App" Height="395.985" Width="603.522"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Icon="MVSP.ico"
 >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
-            <RowDefinition Height="30"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
@@ -24,16 +27,21 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Margin="5,4,0,0" Grid.Row="1" Text="Enter movie title:" />
-        <TextBox Margin="5 0" Grid.Row="1" Grid.Column="1" Height="30" Text="Test" ></TextBox>
-        <TextBox Margin="5 0" Grid.Row="2" Grid.Column="1" Height="30" Text="Test" ></TextBox>
-        <TextBox Margin="5 0" Grid.Row="3" Grid.Column="1" Height="30" Text="Test" ></TextBox>
-        <TextBox Margin="5 0" Grid.Row="4" Grid.Column="1" Height="30" Text="Test" ></TextBox>
-        <TextBox Margin="5 0" Grid.Row="5" Grid.Column="1" Height="30" Text="Test" ></TextBox>
-        <ComboBox Name="ComboBox1" Margin="5 7 0 0" Grid.Row="2" Loaded="Combobox1_Loaded"></ComboBox>
-        <ComboBox Name="ComboBox2" Margin="5 7 0 0" Grid.Row="3" Loaded="Combobox2_Loaded"></ComboBox>
-        <ComboBox Name="ComboBox3" Margin="5 7 0 0" Grid.Row="4" Loaded="Combobox3_Loaded"></ComboBox>
-        <ComboBox Name="ComboBox4" Margin="5 7 0 0" Grid.Row="5" Loaded="Combobox4_Loaded"></ComboBox>
+        <TextBlock Margin="6 9 1 1" Grid.Row="1" Text="Enter movie title:" />
+        <TextBox Name="TitleBox" Margin="5" Grid.Row="1" Grid.Column="1"/>
+        <TextBlock Margin="6 9 1 1"  Grid.Row="2" Grid.Column="0" Text="Full Title:"></TextBlock>
+        <TextBox Name="TitleTextBox" Margin="5" Grid.Row="2" Grid.Column="1"/>
+        <TextBlock Margin="6 9 1 1"  Grid.Row="3" Grid.Column="0" Text="Released:"></TextBlock>
+        <TextBox Name="ReleasedTextBox" Margin="5" Grid.Row="3" Grid.Column="1"/>
+        <TextBlock Margin="6 9 1 1"  Grid.Row="4" Grid.Column="0" Text="Runtime:"></TextBlock>
+        <TextBox Name="RuntimeTextBox" Margin="5" Grid.Row="4" Grid.Column="1"/>
+        <TextBlock Margin="6 9 1 1"  Grid.Row="5" Grid.Column="0" Text="Director:"></TextBlock>
+        <TextBox Name="DirectorTextBox" Margin="5" Grid.Row="5" Grid.Column="1"/>
+        <TextBlock Margin="6 9 1 1"  Grid.Row="6" Grid.Column="0" Text="Actors:"></TextBlock>
+        <TextBox Name="ActorsTextBox" Margin="5" Grid.Row="6" Grid.Column="1" TextWrapping="Wrap"/>
+        <TextBox Name="ExtrasTextBox" Margin="5" Grid.Row="7" Grid.Column="1"/>
+        <Button Name="SearchButton" Grid.Row="8" Grid.Column="1" Height="31" Width="80" Content="Search" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SearchButton_Clicked"></Button>
+        <Image Name="PosterImage" Grid.Row="1" Grid.Column="2" Margin="0,0,0.5,33" Grid.RowSpan="8"></Image>
     </Grid>
 
 </Window>
