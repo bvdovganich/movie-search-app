@@ -1,19 +1,13 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
+
 
 namespace Movie_Search_App
 {
@@ -22,36 +16,37 @@ namespace Movie_Search_App
     /// </summary>
     public partial class MainWindow : Window
     {
-
-
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        const string plot = "full";
-        const string format = "json";
+        const string Plot = "full";
+        const string Format = "json";
         ImageDownloader downloader = new ImageDownloader();
 
-        static string MakeQuery(string title)
+        //public delegate void OnButtonClickHandler(object sender, RoutedEventArgs e);
+        //public event OnButtonClickHandler OnClicked;
+
+        private static string MakeQuery(string title)
         {
-            return string.Format("http://www.omdbapi.com/?t={0}&y=&plot={1}&r={2}", title, plot, format);
+            return $"http://www.omdbapi.com/?t={title}&y=&plot={Plot}&r={Format}";
         }
 
-        static MovieData UseWebClient(string title)
+        static MovieDataDTO UseWebClient(string title)
         {
             var webClient = new WebClient();
-            string result = webClient.DownloadString(MakeQuery(title));
-            return JsonConvert.DeserializeObject<MovieData>(result);
+            var result = webClient.DownloadString(MakeQuery(title));
+            return JsonConvert.DeserializeObject<MovieDataDTO>(result);
         }
 
         private async void SearchButton_Clicked(object sender, RoutedEventArgs e)
         {
             var title = TitleBox.Text;
-            bool CheckConnection = InternetChecker.IsConnectedToInternet();
-            if (CheckConnection == true)
+            var checkConnection = InternetChecker.IsConnectedToInternet();
+            var movieData = UseWebClient(title);
+            if (checkConnection)
             {
-                var movieData = UseWebClient(title);
                 if (movieData != null)
                 {
                     TitleTextBox.Text = movieData.Title;
@@ -59,21 +54,29 @@ namespace Movie_Search_App
                     RuntimeTextBox.Text = movieData.Runtime;
                     DirectorTextBox.Text = movieData.Director;
                     ActorsTextBox.Text = movieData.Actors;
-                    if (movieData.Poster != "N/A")
-                    {
-                        var image = downloader.DownloadImageTaskAsync(movieData.Poster);
-                        PosterImage.Source = await image;
-                    }
-                    else
-                    {
-                        var image = new BitmapImage(new Uri("StockImage.jpg", UriKind.Relative));
-                        PosterImage.Source = image;
-                    }
-
+                    PlotTextBox.Text = movieData.Plot;
                     if (movieData.Response == false)
                     {
                         MessageBox.Show("Sorry, the movie is not found. If you have entered the title in cyrillic characters, try entering the title in latin characters.",
                             "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else
+                    {
+                        if (movieData.Poster == null)
+                        {
+                            var image = new BitmapImage(new Uri("StockImage.jpg", UriKind.Relative));
+                            PosterImage.Source = image;
+                        }
+                        if (movieData.Poster != "N/A")
+                        {
+                            var image = downloader.DownloadImageTaskAsync(movieData.Poster);
+                            PosterImage.Source = await image;
+                        }
+                        else
+                        {
+                            var image = new BitmapImage(new Uri("StockImage.jpg", UriKind.Relative));
+                            PosterImage.Source = image;
+                        }
                     }
                 }
             }
@@ -83,10 +86,21 @@ namespace Movie_Search_App
                     "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
-        private void OnDownloaded(BitmapImage image)
+
+        private void AdviseButton_OnClick(object sender, RoutedEventArgs e)
         {
-            PosterImage.Dispatcher.Invoke(() => PosterImage.Source = image);
+            var adviserWindow = new AdviserWindow();
+            adviserWindow.ShowDialog();
+            Close();
+        }
+
+        public void MoveTitle(TextBox advisorTextBox)
+        {
+            TitleBox.Text = advisorTextBox.Text;
+            SearchButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
         }
     }
+
+    
 }
 

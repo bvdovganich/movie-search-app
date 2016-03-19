@@ -1,0 +1,45 @@
+﻿<Window x:Class="Movie_Search_App.AdviserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Movie_Search_App"
+        mc:Ignorable="d"
+        Title="Advisor" Height="402" Width="394.5" ResizeMode="NoResize"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}" 
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Icon="MVSP.ico"
+        >
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Hello, I'm your personal movie advisor. Please, select your preferences:" FontSize="16" TextWrapping="Wrap"></TextBlock>
+        <RadioButton Margin="0 5" Name="ComedianButton" Grid.Row="1" Grid.Column="0" Content="I want to laugh." ></RadioButton>
+        <RadioButton Margin="0 5" Name="ActionButton" Grid.Row="2" Grid.Column="0" Content="It would be great to see some explosions and shootings." ></RadioButton>
+        <RadioButton Margin="0 5" Name="RomanticButton" Grid.Row="3" Grid.Column="0" Content="Movie to watch as a couple." ></RadioButton>
+        <RadioButton Margin="0 5" Name="FamilyButton" Grid.Row="4" Grid.Column="0"
+                     Content="I want to watch a movie with all my family and kids."></RadioButton>
+        <RadioButton Margin="0 5" Name="DramaButton" Grid.Row="5" Grid.Column="0" Content="It should be serious, maybe dramatic."></RadioButton>
+        <RadioButton Margin="0 5" Name="SciFiButton" Grid.Row="6" Grid.Column="0" Content="Kind of Sci-Fi"></RadioButton>
+        <TextBlock Name="AdvisorTextBlock" VerticalAlignment="Bottom" Grid.Row="7" Grid.Column="0" Text="So, I think that movie would be great for you:" FontSize="14.667" Margin="0,0,208.5,0" TextWrapping="Wrap" Visibility="Hidden"></TextBlock>
+        <TextBox Name="AdvisorTextBox" Grid.Row="7" Margin="160,0,0.5,0" TextWrapping="Wrap" IsReadOnly="True" Visibility="Hidden"/>
+        <Button Name="AdvisorButton" IsDefault="True" Grid.Row="8" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Advise Me" Click="AdvisorButton_OnClick"></Button>
+        <Button Name="SearchButton" IsDefault="True" Grid.Row="8" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Search It!" Visibility="Collapsed" Click="SearchButton_OnClick" ></Button>
+        <Button Name="RetryButton"  Grid.Row="8" Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="I've seen it!" Visibility="Collapsed" FontSize="13.333" Margin="50 0 0 0" Click="RetryButton_OnClick"></Button>
+    </Grid>
+</Window>
+

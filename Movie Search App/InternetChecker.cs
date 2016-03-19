@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 
 namespace Movie_Search_App
 {
-    class InternetChecker
+     class InternetChecker
     {
         [DllImport("wininet.dll")]
-        private extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
+        private static extern bool InternetGetConnectedState(out int description, int reservedValue);
         public static bool IsConnectedToInternet()
         {
-            int Desc;
-            return InternetGetConnectedState(out Desc, 0);
+            int desc;
+            return InternetGetConnectedState(out desc, 0);
         }
     }
 }

@@ -3,45 +3,65 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Movie_Search_App"
         mc:Ignorable="d"
-        Title="Movie Search App" Height="395.985" Width="603.522"
+        Title="Movie Search App" Height="521.985" Width="610.272"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Icon="MVSP.ico"
 >
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Margin="6 9 1 1" Grid.Row="1" Text="Enter movie title:" />
-        <TextBox Name="TitleBox" Margin="5" Grid.Row="1" Grid.Column="1"/>
-        <TextBlock Margin="6 9 1 1"  Grid.Row="2" Grid.Column="0" Text="Full Title:"></TextBlock>
-        <TextBox Name="TitleTextBox" Margin="5" Grid.Row="2" Grid.Column="1"/>
-        <TextBlock Margin="6 9 1 1"  Grid.Row="3" Grid.Column="0" Text="Released:"></TextBlock>
-        <TextBox Name="ReleasedTextBox" Margin="5" Grid.Row="3" Grid.Column="1"/>
-        <TextBlock Margin="6 9 1 1"  Grid.Row="4" Grid.Column="0" Text="Runtime:"></TextBlock>
-        <TextBox Name="RuntimeTextBox" Margin="5" Grid.Row="4" Grid.Column="1"/>
-        <TextBlock Margin="6 9 1 1"  Grid.Row="5" Grid.Column="0" Text="Director:"></TextBlock>
-        <TextBox Name="DirectorTextBox" Margin="5" Grid.Row="5" Grid.Column="1"/>
-        <TextBlock Margin="6 9 1 1"  Grid.Row="6" Grid.Column="0" Text="Actors:"></TextBlock>
-        <TextBox Name="ActorsTextBox" Margin="5" Grid.Row="6" Grid.Column="1" TextWrapping="Wrap"/>
-        <TextBox Name="ExtrasTextBox" Margin="5" Grid.Row="7" Grid.Column="1"/>
-        <Button Name="SearchButton" Grid.Row="8" Grid.Column="1" Height="31" Width="80" Content="Search" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SearchButton_Clicked"></Button>
-        <Image Name="PosterImage" Grid.Row="1" Grid.Column="2" Margin="0,0,0.5,33" Grid.RowSpan="8"></Image>
-    </Grid>
 
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Height="34">
+            <MenuItem Header="About" Height="34"></MenuItem>
+            <MenuItem Header="Help" Height="34"></MenuItem>
+        </Menu>
+        <Grid Margin="10 0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="60"/>
+                <RowDefinition />
+                <RowDefinition Height="100"/>
+                <RowDefinition />
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="0 9 1 1" Grid.Row="0" Text="Enter movie title:" />
+            <TextBox Name="TitleBox" Margin="5" Grid.Row="0" Grid.Column="1" />
+            <TextBlock Margin="0 9 1 1" Grid.Row="1" Grid.Column="0" Text="Full Title:"></TextBlock>
+            <TextBox Name="TitleTextBox" Margin="5" Grid.Row="1" Grid.Column="1" IsReadOnly="True" />
+            <TextBlock Margin="0 9 1 1" Grid.Row="2" Grid.Column="0" Text="Released:"></TextBlock>
+            <TextBox Name="ReleasedTextBox" Margin="5" Grid.Row="2" Grid.Column="1" IsReadOnly="True" />
+            <TextBlock Margin="0 9 1 1" Grid.Row="3" Grid.Column="0" Text="Runtime:"></TextBlock>
+            <TextBox Name="RuntimeTextBox" Margin="5" Grid.Row="3" Grid.Column="1" IsReadOnly="True" />
+            <TextBlock Margin="0 9 1 1" Grid.Row="4" Grid.Column="0" Text="Director:"></TextBlock>
+            <TextBox Name="DirectorTextBox" Margin="5" Grid.Row="4" Grid.Column="1" IsReadOnly="True" />
+            <TextBlock Margin="0 9 1 1" Grid.Row="5" Grid.Column="0" Text="Actors:"></TextBlock>
+            <TextBox Name="ActorsTextBox" Margin="5" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" IsReadOnly="True" />
+            <TextBox Name="ExtrasTextBox" Margin="5" Grid.Row="6" Grid.Column="1" IsReadOnly="True" />
+            <Button Name="SearchButton" Grid.Row="9" Grid.Column="1" Height="31" Width="80" Content="Search"
+                HorizontalAlignment="Right" VerticalAlignment="Center" Click="SearchButton_Clicked">
+            </Button>
+            <Button Name="AdviseButton"  Grid.Row="9" Grid.Column="1" Height="31" Width="80" Content="Advise" HorizontalAlignment="Left" Click="AdviseButton_OnClick"></Button>
+            <Label Grid.Row="7" Grid.Column="2" Height="25" Width="34" HorizontalAlignment="Left" VerticalAlignment="Top"
+               Grid.ColumnSpan="2" Margin="0.5,0,0,0" Content="Plot:">
+            </Label>
+            <TextBox Name="PlotTextBox" Margin="3 1 0 0" Grid.Row="7" Grid.Column="3" TextWrapping="WrapWithOverflow"
+                 IsReadOnly="True">
+            </TextBox>
+            <ComboBox Name="ExtraCombobox" Margin="5" Grid.Row="6" Grid.Column="0"></ComboBox>
+            <Image x:Name="PosterImage" Grid.Row="0" Grid.Column="3"  Grid.RowSpan="7" />
+
+
+        </Grid>
+    </DockPanel>
 </Window>
