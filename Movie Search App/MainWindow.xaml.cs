@@ -98,6 +98,13 @@ namespace Movie_Search_App
             TitleBox.Text = advisorTextBox.Text;
             SearchButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
         }
+
+        
+
+        public void newMethod(TextBox tbTextBox)
+        {
+            
+        }
     }
 
     
