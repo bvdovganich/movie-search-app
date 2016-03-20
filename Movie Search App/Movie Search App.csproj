@@ -58,6 +58,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -76,7 +78,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Help!Window.xaml.cs">
+      <DependentUpon>Help!Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MSA.Classes\QueryControl.cs" />
+    <Page Include="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdviserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Help!Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -92,8 +109,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DTO\MovieDataDTO.cs" />
-    <Compile Include="ImageDownloader.cs" />
-    <Compile Include="InternetChecker.cs" />
+    <Compile Include="MSA.Classes\ImageDownloader.cs" />
+    <Compile Include="MSA.Classes\InternetChecker.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -117,31 +134,33 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Action.csv" />
-    <None Include="Comedy.csv" />
-    <None Include="Drama.csv" />
-    <None Include="Family.csv" />
+    <None Include="Resources\Action.csv" />
+    <None Include="Resources\Comedy.csv" />
+    <None Include="Resources\Drama.csv" />
+    <None Include="Resources\Family.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Romance.csv" />
-    <None Include="Sci-fi.csv" />
+    <None Include="Resources\Romance.csv" />
+    <None Include="Resources\Sci-fi.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="MVSP.ico" />
+    <Resource Include="Resources\MVSP.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="StockImage.jpg" />
+    <Resource Include="Resources\StockImage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="MSA.Classes\" />
-    <Folder Include="Resources\" />
+    <Resource Include="Resources\MovieLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\HELP.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

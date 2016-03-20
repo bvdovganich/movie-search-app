@@ -8,7 +8,7 @@
         Title="Advisor" Height="402" Width="394.5" ResizeMode="NoResize"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}" 
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Icon="MVSP.ico"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Icon="Resources/MVSP.ico"
         >
     <Grid Margin="10">
         <Grid.RowDefinitions>

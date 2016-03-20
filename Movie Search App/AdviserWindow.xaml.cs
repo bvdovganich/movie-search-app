@@ -26,7 +26,7 @@ namespace Movie_Search_App
             if (SciFiButton.IsChecked == true)
             {
                 
-                var lines = File.ReadAllLines(@"../../Sci-fi.csv");
+                var lines = File.ReadAllLines(@"../../resources/Sci-fi.csv");
                 var r = new Random();
                 var randomLineNumber = r.Next(0, lines.Length - 1);
                 var line = lines[randomLineNumber];
@@ -35,7 +35,7 @@ namespace Movie_Search_App
 
             else if (ComedianButton.IsChecked == true)
             {
-                var lines = File.ReadAllLines(@"../../Comedy.csv");
+                var lines = File.ReadAllLines(@"../../resources/Comedy.csv");
                 var r = new Random();
                 var randomLineNumber = r.Next(0, lines.Length - 1);
                 var line = lines[randomLineNumber];
@@ -44,7 +44,7 @@ namespace Movie_Search_App
 
             else if (DramaButton.IsChecked == true)
             {
-                var lines = File.ReadAllLines(@"../../Drama.csv");
+                var lines = File.ReadAllLines(@"../../resources/Drama.csv");
                 var r = new Random();
                 var randomLineNumber = r.Next(0, lines.Length - 1);
                 var line = lines[randomLineNumber];
@@ -53,7 +53,7 @@ namespace Movie_Search_App
             }
             else if (FamilyButton.IsChecked == true)
             {
-                var lines = File.ReadAllLines(@"../../Family.csv");
+                var lines = File.ReadAllLines(@"../../resources/Family.csv");
                 var r = new Random();
                 var randomLineNumber = r.Next(0, lines.Length - 1);
                 var line = lines[randomLineNumber];
@@ -61,7 +61,7 @@ namespace Movie_Search_App
             }
             else if (RomanticButton.IsChecked == true)
             {
-                var lines = File.ReadAllLines(@"../../Romance.csv");
+                var lines = File.ReadAllLines(@"../../resources/Romance.csv");
                 var r = new Random();
                 var randomLineNumber = r.Next(0, lines.Length - 1);
                 var line = lines[randomLineNumber];
@@ -69,7 +69,7 @@ namespace Movie_Search_App
             }
             else if (ActionButton.IsChecked == true)
             {
-                var lines = File.ReadAllLines(@"../../Action.csv");
+                var lines = File.ReadAllLines(@"../../resources/Action.csv");
                 var r = new Random();
                 var randomLineNumber = r.Next(0, lines.Length - 1);
                 var line = lines[randomLineNumber];

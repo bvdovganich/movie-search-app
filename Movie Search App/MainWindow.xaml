@@ -7,15 +7,17 @@
         Title="Movie Search App" Height="521.985" Width="610.272"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Icon="MVSP.ico"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Icon="Resources/MVSP.ico"
 >
 
     <DockPanel>
-        <Menu DockPanel.Dock="Top" Height="34">
-            <MenuItem Header="About" Height="34"></MenuItem>
-            <MenuItem Header="Help" Height="34"></MenuItem>
+        <Menu DockPanel.Dock="Top" Height="34" Background="#FFF44336" Foreground="#FFFEFEFE" Margin="0,0,-0.5,0">
+            <MenuItem Header="Info" Height="34" Foreground="White">
+                <MenuItem Header="About" Height="34" Click="MenuItem_OnClick"/>
+                <MenuItem Header="Help" Height="34" Click="HelpItem_OnClick"/>
+            </MenuItem>
         </Menu>
-        <Grid Margin="10 0">
+        <Grid Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -24,42 +26,50 @@
                 <RowDefinition />
                 <RowDefinition Height="60"/>
                 <RowDefinition />
-                <RowDefinition Height="100"/>
+                <RowDefinition MinHeight="35" MaxHeight="100"/>
                 <RowDefinition />
                 <RowDefinition Height="35"/>
-                <RowDefinition Height="35"/>
+                
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                
+                <ColumnDefinition Width ="200"/>
+                <ColumnDefinition Width ="20"/>
                 <ColumnDefinition Width="100"/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="30"/>
-                <ColumnDefinition/>
+                
+                <ColumnDefinition />
+                
+                
             </Grid.ColumnDefinitions>
-            <TextBlock Margin="0 9 1 1" Grid.Row="0" Text="Enter movie title:" />
-            <TextBox Name="TitleBox" Margin="5" Grid.Row="0" Grid.Column="1" />
-            <TextBlock Margin="0 9 1 1" Grid.Row="1" Grid.Column="0" Text="Full Title:"></TextBlock>
-            <TextBox Name="TitleTextBox" Margin="5" Grid.Row="1" Grid.Column="1" IsReadOnly="True" />
-            <TextBlock Margin="0 9 1 1" Grid.Row="2" Grid.Column="0" Text="Released:"></TextBlock>
-            <TextBox Name="ReleasedTextBox" Margin="5" Grid.Row="2" Grid.Column="1" IsReadOnly="True" />
-            <TextBlock Margin="0 9 1 1" Grid.Row="3" Grid.Column="0" Text="Runtime:"></TextBlock>
-            <TextBox Name="RuntimeTextBox" Margin="5" Grid.Row="3" Grid.Column="1" IsReadOnly="True" />
-            <TextBlock Margin="0 9 1 1" Grid.Row="4" Grid.Column="0" Text="Director:"></TextBlock>
-            <TextBox Name="DirectorTextBox" Margin="5" Grid.Row="4" Grid.Column="1" IsReadOnly="True" />
-            <TextBlock Margin="0 9 1 1" Grid.Row="5" Grid.Column="0" Text="Actors:"></TextBlock>
-            <TextBox Name="ActorsTextBox" Margin="5" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" IsReadOnly="True" />
-            <TextBox Name="ExtrasTextBox" Margin="5" Grid.Row="6" Grid.Column="1" IsReadOnly="True" />
-            <Button Name="SearchButton" Grid.Row="9" Grid.Column="1" Height="31" Width="80" Content="Search"
-                HorizontalAlignment="Right" VerticalAlignment="Center" Click="SearchButton_Clicked">
+            <TextBlock Margin="0 9 1 1" Grid.Row="0" Grid.Column="2" Text="Enter movie title:" FontWeight="Bold" />
+            <TextBox Name="TitleBox" Margin="5" Grid.Row="0" Grid.Column="3" TextWrapping="Wrap" />
+            <TextBlock Margin="0 9 1 1" Grid.Row="1" Grid.Column="2" Text="Full Title:"></TextBlock>
+            <TextBox Name="TitleTextBox" Margin="5" Grid.Row="1" Grid.Column="3" IsReadOnly="True" TextWrapping="Wrap" />
+            <TextBlock Margin="0 9 1 1" Grid.Row="2" Grid.Column="2" Text="Released:"></TextBlock>
+            <TextBox Name="ReleasedTextBox" Margin="5" Grid.Row="2" Grid.Column="3" IsReadOnly="True" />
+            <TextBlock Margin="0 9 1 1" Grid.Row="3" Grid.Column="2" Text="Runtime:"></TextBlock>
+            <TextBox Name="RuntimeTextBox" Margin="5" Grid.Row="3" Grid.Column="3" IsReadOnly="True" />
+            <TextBlock Margin="0 9 1 1" Grid.Row="4" Grid.Column="2" Text="Director:"></TextBlock>
+            <TextBox Name="DirectorTextBox" Margin="5" Grid.Row="4" Grid.Column="3" IsReadOnly="True" />
+            <TextBlock Margin="0 9 1 1" Grid.Row="5" Grid.Column="2" Text="Actors:"></TextBlock>
+            <TextBox Name="ActorsTextBox" Margin="5" Grid.Row="5" Grid.Column="3" TextWrapping="Wrap" IsReadOnly="True" />
+            <TextBox Name="ExtrasTextBox" Margin="5 5 5 30" Grid.Row="6" Grid.RowSpan="2" Grid.Column="3" IsReadOnly="True" TextWrapping="Wrap" />
+            <Button Name="SearchButton" IsDefault="True" Grid.Row="9" Grid.Column="3" Height="31" Width="80" Content="Search"
+                HorizontalAlignment="Right"  VerticalAlignment="Center"  Click="SearchButton_Clicked">
             </Button>
-            <Button Name="AdviseButton"  Grid.Row="9" Grid.Column="1" Height="31" Width="80" Content="Advise" HorizontalAlignment="Left" Click="AdviseButton_OnClick"></Button>
-            <Label Grid.Row="7" Grid.Column="2" Height="25" Width="34" HorizontalAlignment="Left" VerticalAlignment="Top"
-               Grid.ColumnSpan="2" Margin="0.5,0,0,0" Content="Plot:">
+            <Button Name="AdviseButton"  Grid.Row="9" Grid.Column="3" Height="31" Width="80" Content="Advise" HorizontalAlignment="Left" Click="AdviseButton_OnClick"></Button>
+            <Label Grid.Row="7" Grid.Column="0" Height="25" Width="34" HorizontalAlignment="Left" VerticalAlignment="Top"
+               Grid.ColumnSpan="2" HorizontalContentAlignment="Left" Content="Plot:">
             </Label>
-            <TextBox Name="PlotTextBox" Margin="3 1 0 0" Grid.Row="7" Grid.Column="3" TextWrapping="WrapWithOverflow"
+            <TextBox Name="PlotTextBox" Margin="33 1 0 0" Grid.Row="7" Grid.RowSpan="2" Grid.Column="0" TextWrapping="WrapWithOverflow"
                  IsReadOnly="True">
             </TextBox>
-            <ComboBox Name="ExtraCombobox" Margin="5" Grid.Row="6" Grid.Column="0"></ComboBox>
-            <Image x:Name="PosterImage" Grid.Row="0" Grid.Column="3"  Grid.RowSpan="7" />
+            <ComboBox Name="ExtraCombobox" Margin="0 1 10 1" Grid.Row="6" Grid.Column="2" Loaded="ExtraCombobox_Loaded" DropDownClosed="ExtraCombobox_OnDropDownClosed"></ComboBox>
+            <Image x:Name="PosterImage" Grid.Row="0" Grid.Column="0"  Grid.RowSpan="7" >
+                <Image.Effect>
+                    <DropShadowEffect RenderingBias="Quality" Opacity="0.35" BlurRadius="3"/>
+                </Image.Effect>
+            </Image>
 
 
         </Grid>

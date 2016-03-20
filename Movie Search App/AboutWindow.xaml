@@ -1,0 +1,27 @@
+﻿<Window x:Class="Movie_Search_App.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Movie_Search_App"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" 
+        Title="About" Height="300" Width="300" ResizeMode="NoResize" Icon="Resources/MVSP.ico">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="Resources/MovieLogo.png" Grid.RowSpan="2"></Image>
+        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5,0,77,103" Text="Movie Search App" HorizontalAlignment="Center" FontSize="14.667"></TextBlock>
+        <TextBlock Grid.Column="1" Margin="10,23,54,10" TextWrapping="Wrap"><Run Text="An educational project made by:"/><LineBreak/><Run Text="Smirnov Vladimir"/><LineBreak/><Run Text="Shebatina Diana"/><LineBreak/><Run Text="Dovganich Bogdan"/></TextBlock>
+        <TextBlock Grid.Column="1" Margin="10,0,36,9.5" Grid.Row="1" TextWrapping="Wrap"><Run Text="OMDb API used, big thanks to Brian Fritz for providing it."/><LineBreak/><Run/><LineBreak/><Run Text="Google Play Movies icon used"/></TextBlock>
+
+    </Grid>
+</Window>

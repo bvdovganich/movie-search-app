@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Imaging;
+using Movie_Search_App;
 
 
 
@@ -20,22 +22,13 @@ namespace Movie_Search_App
             InitializeComponent();
         }
 
-        const string Plot = "full";
-        const string Format = "json";
+        
         ImageDownloader downloader = new ImageDownloader();
-
-        //public delegate void OnButtonClickHandler(object sender, RoutedEventArgs e);
-        //public event OnButtonClickHandler OnClicked;
-
-        private static string MakeQuery(string title)
-        {
-            return $"http://www.omdbapi.com/?t={title}&y=&plot={Plot}&r={Format}";
-        }
 
         static MovieDataDTO UseWebClient(string title)
         {
             var webClient = new WebClient();
-            var result = webClient.DownloadString(MakeQuery(title));
+            var result = webClient.DownloadString(QueryControl.MakeQuery(title));
             return JsonConvert.DeserializeObject<MovieDataDTO>(result);
         }
 
@@ -54,6 +47,7 @@ namespace Movie_Search_App
                     DirectorTextBox.Text = movieData.Director;
                     ActorsTextBox.Text = movieData.Actors;
                     PlotTextBox.Text = movieData.Plot;
+                    
                     if (movieData.Response == false)
                     {
                         MessageBox.Show("Sorry, the movie is not found. If you have entered the title in cyrillic characters, try entering the title in latin characters.",
@@ -61,16 +55,18 @@ namespace Movie_Search_App
                     }
                     else
                     {
-                        if (movieData.Poster == null)
-                        {
-                            var image = new BitmapImage(new Uri("StockImage.jpg", UriKind.Relative));
-                            PosterImage.Source = image;
-                        }
                         if (movieData.Poster != "N/A")
                         {
                             var image = downloader.DownloadImageTaskAsync(movieData.Poster);
                             PosterImage.Source = await image;
+                        } 
+
+                        else if (movieData.Poster == null)
+                        {
+                            var image = new BitmapImage(new Uri("StockImage.jpg", UriKind.Relative));
+                            PosterImage.Source = image;
                         }
+                        
                         else
                         {
                             var image = new BitmapImage(new Uri("StockImage.jpg", UriKind.Relative));
@@ -99,14 +95,68 @@ namespace Movie_Search_App
             SearchButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
         }
 
-        
-
-        public void newMethod(TextBox tbTextBox)
+        private void ExtraCombobox_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            List<string> extrasList = new List<string>();
+            extrasList.Add("Awards");
+            extrasList.Add("Country");
+            extrasList.Add("IMDb Rating");
+            extrasList.Add("Rated");
+            extrasList.Add("Language");
+            extrasList.Add("Genre");
+
+            ExtraCombobox.ItemsSource = extrasList;
+            ExtraCombobox.SelectedIndex = 5;
+        }
+
+
+        private void ExtraCombobox_OnDropDownClosed(object sender, EventArgs e)
+        {
+            var title = TitleBox.Text;
+            var movieData = UseWebClient(title);
+
+            if (ExtraCombobox.Text == "Awards")
+            {
+                ExtrasTextBox.Text = movieData.Awards;
+            }
+
+            if (ExtraCombobox.Text == "Country")
+            {
+                ExtrasTextBox.Text = movieData.Country;
+            }
+
+            if (ExtraCombobox.Text == "IMDb Rating")
+            {
+                ExtrasTextBox.Text = movieData.ImdbRating;
+            }
+
+            if (ExtraCombobox.Text == "Rated")
+            {
+                ExtrasTextBox.Text = movieData.Rated;
+            }
+
+            if (ExtraCombobox.Text == "Language")
+            {
+                ExtrasTextBox.Text = movieData.Language;
+            }
+
+            if (ExtraCombobox.Text == "Genre")
+            {
+                ExtrasTextBox.Text = movieData.Genre;
+            }
+        }
+
+        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            var aboutWindow = new AboutWindow();
+            aboutWindow.Show();
+        }
+
+        private void HelpItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            var helpWindow = new Help_Window();
+            helpWindow.Show();
         }
     }
-
-    
 }
 
