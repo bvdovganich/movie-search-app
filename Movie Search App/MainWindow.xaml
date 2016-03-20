@@ -62,7 +62,7 @@
                Grid.ColumnSpan="2" HorizontalContentAlignment="Left" Content="Plot:">
             </Label>
             <TextBox Name="PlotTextBox" Margin="33 1 0 0" Grid.Row="7" Grid.RowSpan="2" Grid.Column="0" TextWrapping="WrapWithOverflow"
-                 IsReadOnly="True">
+                 IsReadOnly="True" VerticalScrollBarVisibility="Visible">
             </TextBox>
             <ComboBox Name="ExtraCombobox" Margin="0 1 10 1" Grid.Row="6" Grid.Column="2" Loaded="ExtraCombobox_Loaded" DropDownClosed="ExtraCombobox_OnDropDownClosed"></ComboBox>
             <Image x:Name="PosterImage" Grid.Row="0" Grid.Column="0"  Grid.RowSpan="7" >

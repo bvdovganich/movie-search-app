@@ -36,9 +36,10 @@ namespace Movie_Search_App
         {
             var title = TitleBox.Text;
             var checkConnection = InternetChecker.IsConnectedToInternet();
-            var movieData = UseWebClient(title);
+            
             if (checkConnection)
             {
+                var movieData = UseWebClient(title);
                 if (movieData != null)
                 {
                     TitleTextBox.Text = movieData.Title;
@@ -47,6 +48,7 @@ namespace Movie_Search_App
                     DirectorTextBox.Text = movieData.Director;
                     ActorsTextBox.Text = movieData.Actors;
                     PlotTextBox.Text = movieData.Plot;
+                    
                     
                     if (movieData.Response == false)
                     {
@@ -63,13 +65,13 @@ namespace Movie_Search_App
 
                         else if (movieData.Poster == null)
                         {
-                            var image = new BitmapImage(new Uri("StockImage.jpg", UriKind.Relative));
+                            var image = new BitmapImage(new Uri("/resources/StockImage.jpg", UriKind.Relative));
                             PosterImage.Source = image;
                         }
                         
                         else
                         {
-                            var image = new BitmapImage(new Uri("StockImage.jpg", UriKind.Relative));
+                            var image = new BitmapImage(new Uri("/resources/StockImage.jpg", UriKind.Relative));
                             PosterImage.Source = image;
                         }
                     }
